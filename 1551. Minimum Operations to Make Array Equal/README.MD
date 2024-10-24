@@ -28,6 +28,4 @@ The goal is to make all elements of the array equal using the fewest number of o
 
 - Return the minimum number of operations needed to make all elements of `arr` equal.
 
-## Example
 
-### Input
