@@ -22,3 +22,6 @@ You are given an array of `n` integers, `nums`, and two arrays of `m` integers e
 
 Return a list of boolean elements `answer`, where `answer[i]` is `true` if the subarray `nums[l[i]], nums[l[i]+1], ..., nums[r[i]]` can be rearranged to form an arithmetic sequence, and `false` otherwise.
 
+## Solution 
+For detailed insights and the complete implementation, you can view the solution [here](https://leetcode.com/problems/arithmetic-subarrays/solutions/5756883/simple-maths-solution-without-sorting-hashing/).
+
