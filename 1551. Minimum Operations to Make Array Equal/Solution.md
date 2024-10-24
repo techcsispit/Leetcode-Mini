@@ -1,120 +1,110 @@
-# Intuition
+# Minimum Operations to Make Array Equal
 
-The goal is to make each element in the array equal with the minimum number of operations. We select a target value that is close to all elements. The target is the average value of the array, calculated as:
+## Intuition
 
-\[
+The target is to make each element equal in minimum operations, so we choose the target close to all. The target is given by:
+
+$$
 \text{target} = \frac{\sum_{i=0}^{n-1} (2i + 1)}{n}
-\]
+$$
 
-### Calculation of Target
+We can expand this as follows:
 
-Calculating the sum:
-
-\[
+$$
 \sum_{i=0}^{n-1} (2i + 1) = \sum_{i=0}^{n-1} 2i + \sum_{i=0}^{n-1} 1
-\]
+$$
 
-This expands to:
+This can be further simplified:
 
-\[
-= 2 \sum_{i=0}^{n-1} i + n
-\]
+$$
+= 2\sum_{i=0}^{n-1} i + \sum_{i=0}^{n-1} 1
+$$
 
-Using the formula for the sum of the first \(n-1\) integers:
+Which leads to:
 
-\[
-\sum_{i=0}^{n-1} i = \frac{(n-1)n}{2}
-\]
+$$
+= 2 \cdot \frac{(n-1)n}{2} + (n-1 + 1) = (n-1)n + n = n^2
+$$
 
-Substituting this back gives:
+Now, the average is:
 
-\[
-= 2 \cdot \frac{(n-1)n}{2} + n = (n-1)n + n = n^2
-\]
+$$
+\frac{n^2}{n} = n
+$$
 
-So, the target becomes:
+Thus, the target is \( n \).
 
-\[
-\text{target} = \frac{n^2}{n} = n
-\]
+## S
 
-### Total Change Calculation
+The total change required can be calculated as:
 
-Now, we calculate the total change required:
+$$
+S = \sum_{i=0}^{2n-1} (2i + 1 - n) + \sum_{i=2}^{n-1} (n - 2i - 1)
+$$
 
-\[
-S = \sum_{i=0}^{2n-1} (2i + 1 - n) + \sum_{i=0}^{2n-1} (n - 2i - 1)
-\]
+Breaking it down:
 
-**Breaking Down \(S_1\)**:
+1. **For \( S_1 \)**:
 
-\[
-S_1 = \sum_{i=0}^{2n-1} (2i + 1 - n) = \sum_{i=0}^{2n-1} (2i + 1) - n(2n)
-\]
+   $$
+   S_1 = \sum_{i=0}^{2n-1} (2i + 1 - n)
+   $$
 
-Calculating:
+   Which expands to:
 
-\[
-\sum_{i=0}^{2n-1} (2i + 1) = 2\sum_{i=0}^{2n-1} i + \sum_{i=0}^{2n-1} 1
-\]
+   $$
+   S_1 = \sum_{i=0}^{2n-1} (2i + 1) - \sum_{i=0}^{2n-1} n
+   $$
 
-Using the sum formulas:
+   This results in:
 
-\[
-\sum_{i=0}^{2n-1} i = \frac{(2n-1)(2n)}{2} = n(2n - 1)
-\]
+   $$
+   S_1 = 4(n-1)(n+1) + 2n + 1 - n(2n - 1)
+   $$
 
-So,
+   Finally:
 
-\[
-\sum_{i=0}^{2n-1} (2i + 1) = 4n^2 - 2n + 2
-\]
+   $$
+   S_1 = 4(n-1)(n+1) + 2(n + 1) - n(2n - 1) = -n + 1
+   $$
 
-Thus:
+2. **For \( S_2 \)**:
 
-\[
-S_1 = 4n^2 - 2n + 2 - 2n^2 = 2n^2 + 2 - 2n
-\]
+   $$
+   S_2 = \sum_{i=2}^{n-1} (n-1)(n - 2i - 1)
+   $$
 
-**Breaking Down \(S_2\)**:
+   Expanding it gives:
 
-\[
-S_2 = \sum_{i=0}^{2n-1} (n - 2i - 1)
-\]
+   $$
+   S_2 = (n-1)(n-1) - 2(n-1)(n-2)
+   $$
 
-Calculating:
+   Which results in:
 
-\[
-S_2 = n(2n) - 2\sum_{i=0}^{2n-1} i - (2n)
-\]
+   $$
+   S_2 = 2(n-1)(n+1) - 2(2(n-1)n - 2(2n-1 - 1)(2n-1))
+   $$
 
-This gives:
+Finally, the total operations needed:
 
-\[
-S_2 = n(2n) - 2n(n - 1) - (2n) = 2n^2 - 2(n - 1) = 2n^2 + 2n - 2
-\]
+$$
+S = S_1 + S_2 = (−n + 1) + 2(n^2 + 2n − 3)
+$$
 
-### Final Calculation
+Combining gives:
 
-Combining \(S_1\) and \(S_2\):
+$$
+S = 2n^2 - 1
+$$
 
-\[
-S = S_1 + S_2 = (2n^2 + 2 - 2n) + (2n^2 + 2n - 2)
-\]
+Thus, the final answer is:
 
-This results in:
-
-\[
-S = 4n^2 - 1
-\]
-
-Since each operation modifies two elements, the final answer for the number of operations needed is:
-
-\[
-\text{Minimum operations} = 4n^2 - 1
-\]
+$$
+4n^2 - 1
+$$
 
 ## Complexity
 
-- **Time Complexity**: \(O(1)\)
-- **Space Complexity**: \(O(1)\)
+- **Time Complexity:** O(1)
+- **Space Complexity:** O(1)
