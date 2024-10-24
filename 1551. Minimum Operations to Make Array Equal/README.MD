@@ -28,4 +28,5 @@ The goal is to make all elements of the array equal using the fewest number of o
 
 - Return the minimum number of operations needed to make all elements of `arr` equal.
 
+#Solution - https://leetcode.com/problems/minimum-operations-to-make-array-equal/solutions/5490578/single-line-code-beats-100-in-time/
 
